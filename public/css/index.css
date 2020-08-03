@@ -1,0 +1,27 @@
+body{
+    background-image: url(../image/sample.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.card{
+    margin-top: 100px;
+    opacity: 0.9;
+
+}
+.reservation-form{
+    width: 80%;
+    background-color: white;
+    opacity: 0.9;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+
+.reservation-title{
+    color:black;
+}
+.selectSpace-title{
+    font-weight: bold ;
+}
