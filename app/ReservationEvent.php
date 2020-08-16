@@ -12,6 +12,8 @@ class ReservationEvent extends Model
 
     public $timestamps = false;
 
+    protected $dates = ['start',];
+
    
     
 

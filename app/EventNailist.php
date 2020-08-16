@@ -8,4 +8,7 @@ class EventNailist extends Pivot
 {
     protected $table = "event_nailist";
 
+    protected $dates = ['start',];
+
+
 }

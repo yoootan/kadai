@@ -51,7 +51,7 @@
                                         {{ __('Logout') }}
                                     </a>
                                     <a class="dropdown-item" href="/admin_shift">
-                                        {{ __('シフト調整') }}
+                                        {{ __('ネイリスト管理') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -65,14 +65,16 @@
             </div>
         </nav>
     <div class="container">
-    <h2 style="margin-top:10px;">シフト変更</h2>
+    <h2 style="margin-top:10px;">ネイリスト管理</h2>
+
 
 <div id="app">
-    <table class="table table-bordered">
+<button v-on:click>新規作成 </button>
+    <table class="table table-bordered" style="margin-top:10px;">
         <thead  class="thead-dark">
             <tr>
                 <th>名前</th>
-                <th>price</th>
+                <th>指名料</th>
                 <th>削除</th>
             </tr>
         </thead>
@@ -102,6 +104,7 @@ Vue.component('nailist-table',{
                  <td v-else><input type="text" class="form-control" v-model="nailist.name" v-on:blur="updateName2(nailist.id,nailist.name)"></td>
                  <td v-if="!isPrice" v-on:dblclick="isPrice=true">@{{ nailist.price }}</td>
                  <td v-else><input type="text" class="form-control" v-model="nailist.price" v-on:blur="updatePrice(nailist.id,nailist.price)"></td>
+                 
    
                  
                  <td><button class="btn btn-danger" v-on:click="deleteRow(nailist.id,index)">削除</button></td>

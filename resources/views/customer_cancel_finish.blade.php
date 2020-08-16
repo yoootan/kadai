@@ -21,7 +21,7 @@
       <div class="form-group row">
         <label for="start" class="col-sm-4 col-form-label">日時</label>
         <div class="col-sm-8">
-        {{ $event->start }}
+        {{ $event->start->format('n月d日G時i分') }}
        
         </div>
         </div>

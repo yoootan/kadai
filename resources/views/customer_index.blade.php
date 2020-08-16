@@ -7,12 +7,13 @@
      @include('finish-modal-calendar')
      
     <div class="container">
+
     <div class="row justify-content-center">
 
        
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"></i>ネイルサロン予約フォーム</div>
+                <div class="card-header"></i>ネイルサロン予約フォーム    <a href="/admin_index" class="btn btn-success" style="float:right;margin-top:20px;">管理用画面</a></div>
                 <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -120,7 +121,7 @@
         slotDuration: '00:30:00',
         firstDay : 1,
         minTime : '10:00',
-        maxTime : '20:00',
+        maxTime : '22:00',
         locale : 'jaLocale',
         editable: false,
         selectable: false,
@@ -173,7 +174,7 @@
            $("#customerModalCalendar input[name='situation']").val(situation);
 
 
-           let start = moment(element.event.start).format("YYYY/MM/DD HH:mm");
+           let start = moment(element.event.start).format("MM/DD HH:mm");
            $("#customerModalCalendar input[name='start']").val(start);
            $("#start-html").text(start);
            $("#start2-html").text(start);

@@ -19,7 +19,7 @@
       <div class="form-group row">
         <label for="start" class="col-sm-4 col-form-label">日時</label>
         <div class="col-sm-8 event-text">
-        {{ $event->start }}〜{{ $event->end}}
+        {{ $event->start->format('n月d日G時i分') }}〜
         <input type="hidden" value="{{ $event->id }}" name="id">
         <input type="hidden" value="{{ $event->start }}" name="start">
 
@@ -40,7 +40,7 @@
         <div class="col-sm-8 event-text">
         @if($nailist == null)
         {{ 'おまかせ '}}
-       @else
+        @else
         {{ $nailist->name}}
         @endif
         </div>

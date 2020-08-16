@@ -8,9 +8,23 @@ class ReservationEvent extends Model
 {
 
 
-    protected $fillable = ['id','name','nailist_id','start','menu_id','email','tel','note','confirmed'];
+    protected $fillable = ['id','name','nailist_id','start','menu_id','email','tel','note','confirmed','price'];
 
     public $timestamps = false;
+
+    protected $dates = ['start',];
+
+   
+    
+
+    public function nailist() 
+{
+    return $this->belongsTo('App\Nailist');
+}
+    public function menu() 
+{
+    return $this->belongsTo('App\Menu');
+}
 
 
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,6 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::middleware('auth:api')->get('/nailist', function (Request $request) {
     return $request->nailist();
+
+    
+});
+Route::middleware('auth:api')->get('/menu', function (Request $request) {
+    return $request->menu();
 
     
 });
@@ -53,10 +60,20 @@ Route::patch('users/{id}',function($id,Request $request){
 });
 
 
-Route::get('nailists',function(){
-	return App\Nailist::all();
+Route::post('nailist/{id}',function(Request $request){
+
+
+	$nailist = nailist::create($request->all());
+
+
+	return response()->json([
+		'success' => 'nailist updated successfully!'
+
+	],200);
 });
 Route::delete('nailists/{id}',function($id){
+
+	
 
 	$nailist = App\Nailist::find($id);
 
@@ -70,7 +87,6 @@ Route::delete('nailists/{id}',function($id){
 
 Route::patch('nailists/{id}',function($id,Request $request){
 
-	$id = $request->input('id');
 
     $nailist = App\Nailist::find($id);
     
@@ -80,5 +96,31 @@ Route::patch('nailists/{id}',function($id,Request $request){
 	return response()->json([
         'success' => 'nailist updated successfully!'
     ],200);
+
+});
+
+Route::post('menu/{id}',function(Request $request){
+
+
+	$menu = Menu::create($request->all());
+
+
+	return response()->json([
+		'success' => 'nailist updated successfully!'
+
+	],200);
+});
+
+Route::delete('menus/{id}',function($id){
+
+	
+
+	$menu = App\Menu::find($id);
+
+	$menu->delete();
+
+	return response()->json([
+        'success' => 'nailist deleted successfully!'
+    ]);
 
 });

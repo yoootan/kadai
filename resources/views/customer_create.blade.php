@@ -5,9 +5,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" >予約登録</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
+       
       </div>
 
 <div class="modal-body">
@@ -29,8 +27,8 @@
 
       <div class="form-group row">
         <label for="start" class="col-sm-4 col-form-label">日時</label>
-        <div class="col-sm-8">
-        {{ $event->start }}〜{{ $event->end}}
+        <div class="col-sm-8 event-text">
+        {{ $event->start->format('n月d日G時i分') }}〜
         <input type="hidden" value="{{ $event->start }}" name="start">
         <input type="hidden" name="id,confirmed">
         </div>

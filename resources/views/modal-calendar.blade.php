@@ -10,46 +10,55 @@
 
       <div class="modal-body">
       <div id="message"></div>
-      <form id="formEvent">
+      <form id="formEvent" action="/admin_reserved_show/{start}" method="get">
+
 
       <div class="form-group row">
-        <label for="reservations" class="col-sm-4 col-form-label">予約人数</label>
-        <div class="col-sm-8">
+        <p for="start" class="col-sm-5">開始時間</p>
+        <div class="col-sm-7">
+        <p id="start-html"></p>
+        </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="title" class="col-sm-5 ">受付状況</label>
+          <div class="col-sm-7">
+          <p id="title-html"></p>
+          <input type="hidden" name="id">
+          <input type="hidden" name="start">
+          </div>
+        </div>
+
+      <div class="form-group row">
+        <label for="reservations" class="col-sm-5 ">予約人数</label>
+        <div class="col-sm-4">
         <p id="reservations-html"></p>
         </div>
-        </div>
-
-      
-        <div class="form-group row">
-        <label for="title" class="col-sm-4 col-form-label">title</label>
-        <div class="col-sm-8">
-        <input type="text" name="title" class="form-control" id="title" >
-        <input type="hidden" name="id">
-
+        <div class="col-sm-3">
+        <input  type="submit"  name="reserved" value="詳細">
         </div>
         </div>
-
+       
        
 
-        <div class="form-group row">
-        <label for="start" class="col-sm-4 col-form-label">開始時間</label>
-        <div class="col-sm-8">
-        <input type="text" name="start" class="form-control date-time" id="start" >
+
+      <div class="form-group row">
+        <label for="reservations" class="col-sm-5 ">キャンセル待ち人数</label>
+        <div class="col-sm-4">
+        <p id="waitings-html"></p>
+        </div>
+        <div class="col-sm-3">
+        <input  type="submit"  name="cancel" value="詳細">
         </div>
         </div>
 
-      
-
-       
-        
-    
         </form>
+        
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary deleteEvent">削除</button>
-        <button type="button" class="btn btn-primary saveEvent">更新</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+     
       </div>
     </div>
   </div>

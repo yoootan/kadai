@@ -1,12 +1,3 @@
-
-
-      
-
-
-
-    
-    
-  
     @extends('layouts.app')
     @section('content')
 
@@ -119,12 +110,12 @@
         slotDuration: '00:30:00',
         firstDay : 1,
         minTime : '10:00',
-        maxTime : '20:10',
+        maxTime : '22:00',
         locale : 'jaLocale',
-        editable: true,
+        editable: false,
         selectable: true,
         allDaySlot: false,
-        droppable: true, 
+        droppable: false, 
             buttonText: {
                 today:'今日',
                 month:'月',
@@ -150,6 +141,10 @@
            $("#modalCalendar #titleModal").text('新規追加');
            $("#modalCalendar button.deleteEvent").css("display","none");
 
+
+           let id = element.event.id;
+           $("#customerModalCalendar input[name='id']").val(id);
+           
            let start = moment(element.start).format("YYYY-MM-DD HH:mm:ss");
            $("#modalCalendar input[name='start']").val(start);
 
@@ -188,33 +183,30 @@
             resetForm("#formEvent");
 
            $("#modalCalendar").modal('show');
-           $("#modalCalendar #titleModal").text('内容変更');
+           $("#modalCalendar #titleModal").text('予約状況');
            $("#modalCalendar button.deleteEvent").css("display","flex");
 
            let id = element.event.id;
            $("#modalCalendar input[name='id']").val(id);
 
            let title = element.event.title;
-           $("#modalCalendar input[name='title']").val(title);
+           //$("#modalCalendar input[name='title']").val(title);
+           $("#title-html").text(title);
 
-           let nailist_id = element.event.extendedProps.nailist_id;
-           $("#modalCalendar select[name='nailist_id']").val(nailist_id);
 
-           let menu_id = element.event.extendedProps.menu_id;
-           $("#modalCalendar select[name='menu_id']").val(menu_id);
-
+           
            let start = moment(element.event.start).format("YYYY-MM-DD HH:mm:ss");
            $("#modalCalendar input[name='start']").val(start);
+           $("#start-html").text(start);
 
-           let end = moment(element.event.end).format("YYYY-MM-DD HH:mm:ss");
-           $("#modalCalendar input[name='end']").val(end);
 
-           let color = element.event.backgroundColor;
-           $("#modalCalendar input[name='color']").val(color);
-
+          
            let reservations = element.event.extendedProps.reservations +'人';
            //$("#modalCalendar textarea[name='reservations']").val(reservations);
            $("#reservations-html").text(reservations);
+
+           let waitings = element.event.extendedProps.waitings +'人';
+           $("#waitings-html").text(waitings);
 
 
           

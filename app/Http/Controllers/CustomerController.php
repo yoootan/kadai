@@ -41,6 +41,8 @@ class CustomerController extends Controller
         
         $event = Event::where('id',$id)->first();
 
+        
+
         $menus = Menu::get();
 
         $nailists = Event::find($id)->nailists()->where('event_nailist.available','1')->get();
@@ -95,6 +97,8 @@ class CustomerController extends Controller
     }
     public function customer_update(Request $request)
     {
+        $request->session()->regenerateToken();
+
 
         $id = $request->input('id');
 
@@ -116,15 +120,25 @@ class CustomerController extends Controller
 
         $reserved->reservations ++;
 
+        $reserved->color = '#FFCCCC';
+
+
+
         if($reserved->reservations == 4){
 
             $reserved->title = '△';
+
+            $reserved->color = '#FFFFCC';
+
 
         }elseif($reserved->reservations >= 5){
 
             $reserved->title = '×';
 
             $reserved->situation = '空きなし';
+
+            $reserved->color = '#FF3366';
+
 
         }else{
 
@@ -150,6 +164,8 @@ class CustomerController extends Controller
         $menu = Menu::where('id',$menu_id)->first();
 
 
+
+
         return view('customer_finish',compact('event','menu','nailist'));
 
     
@@ -157,11 +173,14 @@ class CustomerController extends Controller
 
     public function customer_finish(Request $request){
 
+
+
         return view('customer_finish');
 
 
     }
     public function customer_cancel(Request $request){
+
 
         $event = Event::where('id',$request->id)->first();
 
@@ -181,6 +200,11 @@ class CustomerController extends Controller
 
         $menu = Menu::where('id',$menu_id)->first();
 
+        $cancelEvent = Event::where('start',$event->start)->first();
+
+        $cancelEvent->waitings ++ ;
+
+        $cancelEvent->save();
 
 
         return view('customer_cancel_finish',compact('event','menu'));

@@ -8,6 +8,9 @@ class Nailist extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = ['id', 'price', 'name'];
+
+
     protected $table = 'nailists';
 
 
@@ -22,8 +25,8 @@ class Nailist extends Model
 
 }
 
-public function rests()
+public function shifts()
 {
-    return $this->hasMany('App\Rest');
+    return $this->hasMany('App\Shift');
 }
 }
