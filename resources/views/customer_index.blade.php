@@ -144,15 +144,13 @@
             clearMessages('#message');
 
 
-            //resetForm("#formEvent");
-           
-
-
            $("#customerModalCalendar").modal('show');
            $("#customerModalCalendar #titleCustomerModal").text('予約内容を選んでください').css('text-align','center');
 
            $('#can').show();
            $('#cancel').hide();
+           $('#stop').hide();
+
 
            
 
@@ -177,13 +175,32 @@
            let start = moment(element.event.start).format("MM/DD HH:mm");
            $("#customerModalCalendar input[name='start']").val(start);
            $("#start-html").text(start);
-           $("#start2-html").text(start);
+           $("#startCancel-html").text(start);
+           $("#startStop-html").text(start);
 
-           if (title == "×") {
-            $('#can').hide();
-           $('#cancel').show();
+
+           var today = new Date()
+
+            if (today > element.event.start){
+                $('#can').hide();
+                $('#cancel').hide();
+                $('#stop').show();
                
+           }else{
+
+            if (title == "×") {
+                $('#can').hide();
+                $('#cancel').show();
+                $('#stop').hide();
+            }
            }
+
+
+          
+
+           
+
+
         
 
 

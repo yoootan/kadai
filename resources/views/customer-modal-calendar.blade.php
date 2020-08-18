@@ -44,6 +44,7 @@
             
           
             <div   class="modal-footer" >
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
             <input  type="submit" class="btn btn-primary" value="キャンセル待ち予約">
             </div>
            
@@ -67,7 +68,7 @@
             <div class="form-group row">
               <label for="start" class="col-sm-4 col-form-label">開始時間</label>
               <div class="col-sm-8">
-              <p id="start2-html"></p>
+              <p id="startCancel-html"></p>
               </div>
               </div>
       
@@ -91,6 +92,47 @@
             <div   class="modal-footer" >
             <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
             <input  type="submit" class="btn btn-primary" value="次へ">
+            </div>
+      
+      </form>
+      </div>
+      <div class="modal-body" id="stop">
+      <div id="message3"></div>
+
+      <form action="/customer_create" method="get">
+      @csrf
+      <div id="message2"></div>
+      <div id="formEvent2">
+      <input type="hidden" name="id">
+      <input type="hidden" name="start">
+
+               
+            <div class="form-group row">
+              <label for="start" class="col-sm-4 col-form-label">開始時間</label>
+              <div class="col-sm-8">
+              <p id="startStop-html"></p>
+              </div>
+              </div>
+      
+      
+            <div class="form-group row">
+              <label for="situation" class="col-sm-4 col-form-label">受付状況</label>
+              <div class="col-sm-8">
+              <p >受付終了</p>
+              </div>
+              </div>
+      
+            <div class="form-group row">
+              <label for="title" class="col-sm-4 col-form-label">空き状況</label>
+              <div class="col-sm-8">
+              <p>受付終了</p>
+              </div>
+              </div>
+          
+           
+            </div>
+            <div   class="modal-footer" >
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
             </div>
       
       </form>

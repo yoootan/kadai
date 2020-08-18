@@ -42,14 +42,13 @@ Route::get('/admin_edit','AdminController@admin_edit');
 Route::post('/admin_store','AdminController@admin_store');
 Route::get('/admin_reserved_show/{start}','AdminController@admin_reserved_show');
 Route::get('/admin_cancel_show/{start}','AdminController@admin_cancel_show');
-Route::get('/admin_test','AdminController@admin_test');
-Route::get('/admin_test2','AdminController@admin_test2');
 Route::get('/admin_management','AdminController@admin_management');
 Route::post('/admin_management_store','AdminController@admin_management_store');
 Route::get('/admin_create_menu','AdminController@admin_create_menu');
 Route::get('/admin_create_nailist','AdminController@admin_create_nailist');
 Route::post('/admin_store_menu','AdminController@admin_store_menu');
 Route::post('/admin_store_nailist','AdminController@admin_store_nailist');
+Route::delete('/admin/{id}/delete', 'AdminController@admin_reserved_delete')->name('admin_reserved_delete');
 
     
 });
@@ -57,12 +56,6 @@ Route::post('/admin_store_nailist','AdminController@admin_store_nailist');
 //ajax
 Route::get('ajax/menu', 'Ajax\AjaxAdminController@menu');
 Route::get('ajax/nailist', 'Ajax\AjaxAdminController@nailist');
-
-
-
-
-
-
 
 Auth::routes();
 
