@@ -219,15 +219,11 @@ class AdminController extends Controller
 
         $day = $request->monthDay;
 
-        $getMonday = Carbon::today();
-
-        $getMonday = $getMonday->setDate($year,$month,$day);
-
-        $getMonday->startOfWeek();
-           
         $today = Carbon::today();
 
-        $firstTime = $today->setDate($year,$month,$day);
+        $getMonday = $today->copy()->setDate($year,$month,$day)->startOfWeek();
+
+        $firstTime = $today->copy()->setDate($year,$month,$day);
 
         if($getMonday == $firstTime){
 
@@ -323,10 +319,7 @@ class AdminController extends Controller
                 }
 
         }
-
-        $todayTime = Carbon::today();
-
-        $todayTime = $todayTime->setDate($year,$month,$day);
+        $todayTime = $today->setDate($year,$month,$day);
 
          Shift::where('day',$todayTime)->where('nailist_id',$nailist_id)->first()->update(['shift' => $rest]);
 
