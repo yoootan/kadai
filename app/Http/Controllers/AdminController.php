@@ -228,10 +228,9 @@ class AdminController extends Controller
        $nailists = Nailist::get();
 
        foreach($nailists as $nailist){
-           $nailists_ids[] = $nailist->id;
+           $nailists_ids[] = [$nailist->id,$nailist->name];
        }
 
-       //dd($nailists_ids);
 
         return view('/admin_management',compact('nailists','month','dayEnd','year','nextMonth','nextYear','backYear','backMonth','shifts','nailists_ids','dates'));
     }
