@@ -39,22 +39,35 @@
         <input type="submit">
             
     </form>
+        <p style="text-align:center;">月曜日は定休日想定のため変更できません</p>
 
         <table class="table table-bordered">
           <thead>
+            <tr>
+                <td></td>
+                @foreach($dates as $date)
+                <td>{{ $date }}</td>
+                @endforeach
+            </tr>
             <tr>
                 <td></td>
                 @foreach(range(1,$dayEnd) as $number)
                 <td>{{$number}}</td>
                 @endforeach
             </tr>
+          
           </thead>
          
           
           <tbody>
-          
+          @foreach($nailists as $nailist)
             <tr>
+           
                  <td>{{ $nailist->name}}</td>
+            
+                 </tr>
+                 @endforeach
+                 <tr>
 
                    
                    
@@ -67,7 +80,7 @@
                   
 
                   @endforeach    
-             </tr>
+            
          
           </tbody>
         </table> 

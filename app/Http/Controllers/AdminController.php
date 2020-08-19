@@ -201,6 +201,21 @@ class AdminController extends Controller
             $dayEnd = 30;
         }
 
+        setlocale(LC_ALL, 'ja_JP.UTF-8');
+
+        
+
+
+        for($d = 0 ; $d < $dayEnd ; $d ++){
+
+            $dates[] = $monthStart->formatLocalized('%a');
+
+            $monthStart->add(new DateInterval('P0Y0M1D'));
+
+        }
+;
+       
+
        $nailistCount = Nailist::count();
 
        
@@ -218,7 +233,7 @@ class AdminController extends Controller
 
        //dd($nailists_ids);
 
-        return view('/admin_management',compact('nailists','month','dayEnd','year','nextMonth','nextYear','backYear','backMonth','shifts','nailists_ids'));
+        return view('/admin_management',compact('nailists','month','dayEnd','year','nextMonth','nextYear','backYear','backMonth','shifts','nailists_ids','dates'));
     }
 
     public function admin_management_store(Request $request){
