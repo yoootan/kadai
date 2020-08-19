@@ -69,13 +69,19 @@
               <tr>
              <td>{{ $nailists_id[1]}}</td>
            @for($i = 0 ; $i < $dayEnd ;$i ++)
-                <td>{{ $shifts[$nailists_id[0]][$i]["shift"]}}</td>
+           @if(  $shifts[$nailists_id[0]][$i]["shift"] == 0)
+           <td>出勤</td>
+           @elseif( $shifts[$nailists_id[0]][$i]["shift"]== 1)
+           <td>休み</td>
+           @elseif( $shifts[$nailists_id[0]][$i]["shift"] == 2)
+           <td>早番</td>
+           @elseif( $shifts[$nailists_id[0]][$i]["shift"] == 3)
+           <td>遅番</td>
+           @endif
+
+
            @endfor
           
-        
-     
-   
-
   
                 </tr>
                 @endforeach
