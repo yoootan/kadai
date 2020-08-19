@@ -60,27 +60,29 @@
          
           
           <tbody>
+          
+                
+
           @foreach($nailists as $nailist)
-            <tr>
-           
-                 <td>{{ $nailist->name}}</td>
-            
-                 </tr>
-                 @endforeach
-                 <tr>
 
-                   
-                   
-                   @foreach($nailists_ids as $nailists_id)
+                <tr>
+                <td>{{$nailist->name}}</td>
+               
+                @foreach($nailists_ids as $nailists_id)
+              
+           @for($i = 0 ; $i < $dayEnd ;$i ++)
+                <td>{{ $shifts[$nailists_id][$i]["shift"]}}</td>
+           @endfor
+          
+        
+      @break
+   @endforeach 
 
-                 
-                    @for($i = 1 ; $i < $dayEnd ;$i ++)
-                  <td>{{ $shifts[$nailists_id][$i]["shift"]}}<td>
-                  @endfor
-                  
+  
+                </tr>
+                @endforeach
 
-                  @endforeach    
-            
+          
          
           </tbody>
         </table> 
