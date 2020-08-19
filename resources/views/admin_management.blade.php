@@ -52,28 +52,35 @@
          
           
           <tbody>
-            @foreach($nailists as $nailist)
-            　<tr>
+          
+            <tr>
                  <td>{{ $nailist->name}}</td>
 
-                    @foreach($shifts as $s)
+                   
+                   
+                   @foreach($nailists_ids as $nailists_id)
 
-                    @if( $s->shift == 0 )
-                    <td>出勤</td>
-                    @elseif( $s->shift == 1)
-                    <td>休み</td>
-                    @elseif( $s->shift == 2)
-                    <td>早番</td>
-                    @elseif( $s->shift == 3)
-                    <td>遅番</td>
-                    @endif
+                 
+                    @for($i = 1 ; $i < $dayEnd ;$i ++)
+                  <td>{{ $shifts[$nailists_id][$i]["shift"]}}<td>
+                  @endfor
+                  
 
-                    @endforeach
+                  @endforeach    
              </tr>
-          　@endforeach
+         
           </tbody>
         </table> 
-　　</div>
+
+
+
+
+
+
+
+
+
+  </div>
 @endsection
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

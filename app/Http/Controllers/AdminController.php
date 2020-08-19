@@ -12,6 +12,7 @@ use App\CancelWaiting;
 use DateTime;
 use DateInterval;
 use Carbon\Carbon;
+use DB;
 
 
 class AdminController extends Controller
@@ -202,13 +203,22 @@ class AdminController extends Controller
 
        $nailistCount = Nailist::count();
 
-       $nailist_id = 1;
        
-       $shifts = Shift::whereYear('day',$year)->whereMonth('day',$month)->where('nailist_id',$nailist_id)->get();
+       $shifts = Shift::whereYear('day',$year)->whereMonth('day',$month)->get();
+
+
+       $shifts = $shifts->groupBy('nailist_id');
+
 
        $nailists = Nailist::get();
 
-        return view('/admin_management',compact('nailists','month','dayEnd','year','nextMonth','nextYear','backYear','backMonth','shifts'));
+       foreach($nailists as $nailist){
+           $nailists_ids[] = $nailist->id;
+       }
+
+       //dd($nailists_ids);
+
+        return view('/admin_management',compact('nailists','month','dayEnd','year','nextMonth','nextYear','backYear','backMonth','shifts','nailists_ids'));
     }
 
     public function admin_management_store(Request $request){
