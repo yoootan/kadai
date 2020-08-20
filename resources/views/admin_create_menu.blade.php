@@ -37,17 +37,29 @@
       
         <table class="table table-bordered" >
    <thead>
-    <tr>
+    <tr style="text-align:center;">
       <th scope="col">メニュー名</th>
       <th scope="col">価格</th>
     </tr>
    </thead>
+  
+  
    <tbody>
-    <tr v-for="menu in menus">
-      <td>@{{ menu.name }}</td>
-      <td>@{{ menu.price }}</td>
+   @foreach($menus as $menu)
+    <tr style="text-align:center;">
+  
+      <td>{{ $menu->name }}</td>
+      <td>{{ $menu->price }}</td>
+      <form action="{{ route('admin_menu_delete', [$menu->id]) }}" method="post">
+        @csrf
+        @method('DELETE')
+      
+        <td><input type="submit" class="btn btn-danger" value="削除"></td>
         </form>
-    </tr>
+        </tr>
+      
+        @endforeach
+ 
   
    </tbody>
             

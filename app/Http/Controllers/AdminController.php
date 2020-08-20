@@ -91,7 +91,9 @@ class AdminController extends Controller
 
         $month = $today->month;
 
-        return view('/admin_create_menu',compact('year','month'));
+        $menus = Menu::get();
+
+        return view('/admin_create_menu',compact('year','month','menus'));
     }
 
     public function admin_store_menu(Request $request){
@@ -203,9 +205,6 @@ class AdminController extends Controller
 
         setlocale(LC_ALL, 'ja_JP.UTF-8');
 
-        
-
-
         for($d = 0 ; $d < $dayEnd ; $d ++){
 
             $dates[] = $monthStart->formatLocalized('%a');
@@ -213,8 +212,6 @@ class AdminController extends Controller
             $monthStart->add(new DateInterval('P0Y0M1D'));
 
         }
-;
-       
 
        $nailistCount = Nailist::count();
 
@@ -228,9 +225,9 @@ class AdminController extends Controller
        $nailists = Nailist::get();
 
        foreach($nailists as $nailist){
+
            $nailists_ids[] = [$nailist->id,$nailist->name];
        }
-
 
         return view('/admin_management',compact('nailists','month','dayEnd','year','nextMonth','nextYear','backYear','backMonth','shifts','nailists_ids','dates'));
     }
@@ -390,6 +387,16 @@ class AdminController extends Controller
         $customerEvent->save();
         
         return redirect()->back();
+
+    }
+
+    public function admin_menu_delete($id){
+
+        dd($id);
+
+        return redirect()->back();
+
+
 
     }
     

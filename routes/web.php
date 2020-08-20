@@ -49,6 +49,7 @@ Route::get('/admin_create_nailist','AdminController@admin_create_nailist');
 Route::post('/admin_store_menu','AdminController@admin_store_menu');
 Route::post('/admin_store_nailist','AdminController@admin_store_nailist');
 Route::delete('/admin/{id}/delete', 'AdminController@admin_reserved_delete')->name('admin_reserved_delete');
+Route::delete('/admin/menu/{id}/delete', 'AdminController@admin_menu_delete')->name('admin_menu_delete');
 
     
 });
