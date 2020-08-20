@@ -45,21 +45,27 @@
   
   
    <tbody>
+
    @foreach($menus as $menu)
+
+
     <tr style="text-align:center;">
   
       <td>{{ $menu->name }}</td>
       <td>{{ $menu->price }}</td>
+      <td>
       <form action="{{ route('admin_menu_delete', [$menu->id]) }}" method="post">
         @csrf
         @method('DELETE')
-      
-        <td><input type="submit" class="btn btn-danger" value="削除"></td>
+        <input type="submit" name="delete" class="btn btn-danger" value="削除">  
         </form>
-        </tr>
+      </td>
+    </tr>
+    
       
+
         @endforeach
- 
+
   
    </tbody>
             

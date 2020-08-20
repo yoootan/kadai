@@ -37,10 +37,18 @@
     </tr>
    </thead>
    <tbody>
-    <tr v-for="nailist in nailists">
-      <td>@{{ nailist.name }}</td>
+   @foreach($nailists as $nailist)
+    <tr>
+      <td>{{ $nailist->name }}
+      <form action="{{ route('admin_nailist_delete', [$nailist->id]) }}" method="post">
+        @csrf
+        @method('DELETE')
+        <input type="submit" name="delete" class="btn btn-danger" value="削除" style="float:right;">  
         </form>
+      </td>
+        
     </tr>
+    @endforeach
   
    </tbody>
             

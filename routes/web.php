@@ -50,6 +50,7 @@ Route::post('/admin_store_menu','AdminController@admin_store_menu');
 Route::post('/admin_store_nailist','AdminController@admin_store_nailist');
 Route::delete('/admin/{id}/delete', 'AdminController@admin_reserved_delete')->name('admin_reserved_delete');
 Route::delete('/admin/menu/{id}/delete', 'AdminController@admin_menu_delete')->name('admin_menu_delete');
+Route::delete('/admin/nailist/{id}/delete', 'AdminController@admin_nailist_delete')->name('admin_nailist_delete');
 
     
 });

@@ -167,7 +167,7 @@ class CustomerController extends Controller
 
         return view('customer_cancel_finish',compact('event','menu'));
     }
-    public function customer_test(){
+    /*public function customer_test(){
 
         $id = Nailist::find(3)->events()->first()->pivot->id;
 
@@ -195,6 +195,6 @@ class CustomerController extends Controller
 
         return view('customer_test',compact('events','nailist','eventNailistCounts','rests','reserved','reservedCount'));
 
-    }
+    }*/
 
 }

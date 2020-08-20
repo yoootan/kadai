@@ -110,7 +110,9 @@ class AdminController extends Controller
 
         $month = $today->month;
 
-        return view('/admin_create_nailist',compact('year','month'));
+        $nailists = Nailist::get();
+
+        return view('/admin_create_nailist',compact('year','month','nailists'));
     }
     public function admin_store_nailist(Request $request){
 
@@ -392,11 +394,16 @@ class AdminController extends Controller
 
     public function admin_menu_delete($id){
 
-        dd($id);
+        Menu::where('id',$id)->delete();
 
         return redirect()->back();
 
+    }
+    public function admin_nailist_delete($id){
 
+        Nailist::where('id',$id)->delete();
+
+        return redirect()->back();
 
     }
     
