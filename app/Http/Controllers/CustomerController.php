@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Nailist;
+use App\Caution;
 use App\Menu;
 use App\Shift;
 use App\Rest;
@@ -24,7 +25,9 @@ class CustomerController extends Controller
         
         $menus = Menu::get();
 
-        return view('customer_index',compact('nailists','menus'));
+        $caution = Caution::first();
+
+        return view('customer_index',compact('nailists','menus','caution'));
     }
 
     

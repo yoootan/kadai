@@ -46,6 +46,8 @@ Route::get('/admin_management','AdminController@admin_management');
 Route::post('/admin_management_store','AdminController@admin_management_store');
 Route::get('/admin_create_menu','AdminController@admin_create_menu');
 Route::get('/admin_create_nailist','AdminController@admin_create_nailist');
+Route::get('/admin_edit_caution','AdminController@admin_edit_caution');
+Route::post('/admin_update_caution','AdminController@admin_update_caution');
 Route::post('/admin_store_menu','AdminController@admin_store_menu');
 Route::post('/admin_store_nailist','AdminController@admin_store_nailist');
 Route::delete('/admin/{id}/delete', 'AdminController@admin_reserved_delete')->name('admin_reserved_delete');

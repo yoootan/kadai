@@ -13,7 +13,7 @@
        
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"></i>ネイルサロン予約フォーム    <a href="/admin_index" class="btn btn-success" style="float:right;margin-top:20px;">管理用画面</a></div>
+                <div class="card-header"></i>ネイルサロン予約フォーム  <a href="/admin_index" class="btn btn-success" style="float:right;margin-top:20px;">管理用画面</a></div>
                 <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -25,9 +25,7 @@
     <div class="reservation-form">
   <div class="reservation-attention">
       <p>ご注文に際しての注意事項です。<br></p>
-      <p>ダミー文章です。ダミー文章です。ダミー文章です。<br></p>
-      <p>ダミー文章です。ダミー文章です。ダミー文章です。<br></p>
-      <p>ダミー文章です。ダミー文章です。ダミー文章です。<br></p>
+      <p>{{ $caution->text }}</p>
      <br>
   </div>
   </div>

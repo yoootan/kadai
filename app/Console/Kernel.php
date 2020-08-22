@@ -2,6 +2,10 @@
 
 namespace App\Console;
 
+use Illuminate\Support\Facades\DB;
+use App\Event;
+use Carbon\Carbon;
+
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,8 +28,25 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+
+            $now = Carbon::now();
+
+            $finishEvents = Event::where('start', '<', $now)->get();
+
+            foreach($finishEvents as $finishEvent){
+
+                $finishEvent->title = '受付終了';
+
+                $finishEvent->save();
+            }
+           
+    
+            
+        })
+        ->hourly()
+        ->timezone('Asia/Tokyo')
+        ->between('10:00', '21:00');
     }
 
     /**

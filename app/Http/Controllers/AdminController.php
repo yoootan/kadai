@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Nailist;
+use App\Caution;
 use App\Menu;
 use App\Shift;
 use App\ReservationEvent;
@@ -18,6 +19,8 @@ use DB;
 class AdminController extends Controller
 {
     public function admin_index(){
+
+       
         
         $this->middleware('auth');
 
@@ -102,6 +105,27 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function admin_edit_caution(){
+
+        $today = Carbon::now();
+
+        $year = $today->year;
+
+        $month = $today->month;
+
+        return view('/admin_edit_caution',compact('year','month'));
+    }
+
+    public function admin_update_caution(Request $request){
+
+        $caution = Caution::first();
+
+        $caution->fill($request->all());
+
+        return redirect()->back();
+    }
+
     public function admin_create_nailist(){
 
         $today = Carbon::now();

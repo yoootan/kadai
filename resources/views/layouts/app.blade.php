@@ -81,6 +81,9 @@
                                 <a class="dropdown-item" href="/admin_create_menu">
                                         {{ __('メニュー登録') }}
                                     </a>
+                                <a class="dropdown-item" href="/admin_edit_caution">
+                                        {{ __('注意事項編集') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
