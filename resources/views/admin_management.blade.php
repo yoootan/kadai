@@ -70,13 +70,13 @@
              <td>{{ $nailists_id[1]}}</td>
            @for($i = 0 ; $i < $dayEnd ;$i ++)
            @if(  $shifts[$nailists_id[0]][$i]["shift"] == 0)
-           <td>出勤</td>
+           <td style="background-color:lightblue;">出勤</td>
            @elseif( $shifts[$nailists_id[0]][$i]["shift"]== 1)
-           <td>休み</td>
+           <td  style="background-color:lightgray;">休み</td>
            @elseif( $shifts[$nailists_id[0]][$i]["shift"] == 2)
-           <td>早番</td>
+           <td style="background-color:lightpink;">早番</td>
            @elseif( $shifts[$nailists_id[0]][$i]["shift"] == 3)
-           <td>遅番</td>
+           <td style="background-color:lightgreen;">遅番</td>
            @endif
 
 

@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
 
             $now = Carbon::now();
 
-            $finishEvents = Event::where('start', '<', $now)->get();
+            $finishEvents = Event::where('start', '<=', $now)->get();
 
             foreach($finishEvents as $finishEvent){
 
