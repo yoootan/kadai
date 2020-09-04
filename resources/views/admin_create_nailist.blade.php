@@ -7,7 +7,7 @@
         </div>
     @endif
         <div id="app">
-        <h2 style="margin-top:30px;">スタッフ一覧</h2>
+        <h2 style="margin-top:30px;">ネイリスト一覧</h2>
         <button v-on:click="openModal" style="float:right; margin-bottom:10px;">新規作成</button>
         <open-modal v-show="showContent" v-on:from-child="closeModal">
         <div>
