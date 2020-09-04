@@ -1,5 +1,11 @@
 @include('layouts.vue_app')
     <div class="container">
+
+    @if(session()->has('message'))
+        <div class="alert alert-info mb-3">
+            {{session('message')}}
+        </div>
+    @endif
         <div id="app">
         <h2 style="margin-top:30px;">スタッフ一覧</h2>
         <button v-on:click="openModal" style="float:right; margin-bottom:10px;">新規作成</button>

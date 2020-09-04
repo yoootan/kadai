@@ -426,17 +426,39 @@ class AdminController extends Controller
 
     public function admin_menu_delete($id){
 
-        Menu::where('id',$id)->delete();
+        $reservationEvent = ReservationEvent::where('menu_id',$id)->first();
+
+        if($reservationEvent == null){
+
+            Menu::where('id',$id)->delete();
+
+            return redirect()->back();
+
+        }else{
+
+        session()->flash('message', '予約が入っているメニューは削除できません。');
 
         return redirect()->back();
+
+        }
 
     }
     public function admin_nailist_delete($id){
 
-        Nailist::where('id',$id)->delete();
+        $reservationEvent = ReservationEvent::where('nailist_id',$id)->first();
+
+        if($reservationEvent == null){
+
+            Nailist::where('id',$id)->delete();
+
+            return redirect()->back();
+
+        }else{
+
+        session()->flash('message', '予約が入っているネイリストは削除できません。');
 
         return redirect()->back();
 
+        }
     }
-    
 }
