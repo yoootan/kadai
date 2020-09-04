@@ -114,14 +114,22 @@ class AdminController extends Controller
 
         $month = $today->month;
 
-        return view('/admin_edit_caution',compact('year','month'));
+        $text = Caution::first()->text;
+
+        return view('/admin_edit_caution',compact('year','month','text'));
     }
 
     public function admin_update_caution(Request $request){
 
         $caution = Caution::first();
 
-        $caution->fill($request->all());
+        $text = $request->text;
+
+        $caution->text = $text;
+
+        $caution->save();
+
+        session()->flash('message', '変更しました。');
 
         return redirect()->back();
     }

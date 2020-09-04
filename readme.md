@@ -1,71 +1,140 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# vue-ts-bitcoin-api
+2
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+3
+## Overview
+4
 
-## About Laravel
+5
+---
+6
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+7
+SPA でビットコインの価格を取得するアプリです
+8
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+9
+decorator を使用せず、Vue TypeScript を使用しベストプラクティスを目指したもの
+10
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+@shunkominato
+　jest VButton.vue
+11 days ago
+11
+-   component を Atomic Design で分割
+@shunkominato
+init
+11 days ago
+12
+-   flux 設計で vuex を構築
+13
+-   テストコードは jest を使用
+14
 
-## Learning Laravel
+15
+やはり decorator を使用しないとインテリセンスが効かずしんどい...
+16
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+17
+## Description
+18
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost you and your team's skills by digging into our comprehensive video library.
+19
+---
+20
 
-## Laravel Sponsors
+@shunkominato
+comment add
+10 days ago
+21
+component を Atomic Design で分割しているが、tmplates と pages は使用していない  
+@shunkominato
+init
+11 days ago
+22
+view フォルダが pages に当たる  
+@shunkominato
+comment add
+10 days ago
+23
+state などの型定義は stores/entities/entities.ts で定義  
+24
+Axios 通信を実行するのは/stores/asyncRequest.ts であり、共通ライブラリとして使用するため、レスポンスの型を any としている
+25
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+26
+-   vuex の流れ  
+27
+    1.components or views で dispach し、 stores/actions.ts の Actions を呼ぶ  
+28
+    2.Actions で Api を実行(Axios)  
+29
+    3.実行後、Actions から Mutation を呼び出し、state を更新  
+30
+    4.components or views で computed にて getters を呼び、価格を取得する
+31
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
+32
+-   ルール  
+33
+    actions に dispatch するのは view のみに統一  
+34
+    molecules 以下は dataless  
+35
+    props down emit up  
+36
+    props を子コンポーネントで更新しない
+@shunkominato
+　jest VButton.vue
+11 days ago
+37
 
-## Contributing
+@shunkominato
+init
+11 days ago
+38
+## install
+39
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+40
+---
+41
 
-## Security Vulnerabilities
+42
+1.install
+43
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+44
+```bash
+45
+$ yarn install
+46
+```
+47
 
-## License
+48
+2.起動
+49
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+50
+```bash
+51
+$ yarn dev
+52
+```
+53
+
+54
+## test
+55
+
+56
+---
+57
+
+58
+```bash
+59
+$ yarn test
+60
+```

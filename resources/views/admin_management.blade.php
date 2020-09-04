@@ -10,7 +10,11 @@
 
     <div class="shift-list" style="text-align:center;">
     <h2 >シフト管理</h2>
+    @if($year <= 2020 && $month <= 8)
+        <h2><span style="font-size:large;"></span>{{ $year }}年{{ $month }}月<span style="font-size:large;"><a href="/admin_management?year={{$nextYear}}&month={{$nextMonth}}">次へ</a></span></h2>
+    @else
         <h2><span style="font-size:large;"><a href="/admin_management?year={{$backYear}}&month={{$backMonth}}">前へ</a></span>{{ $year }}年{{ $month }}月<span style="font-size:large;"><a href="/admin_management?year={{$nextYear}}&month={{$nextMonth}}">次へ</a></span></h2>
+    @endif
     </div>
 
     <form  action="/admin_management_store?year={{$year}}&month={{$month}}" method="post" style="text-align:center;">
@@ -55,15 +59,8 @@
                 <td>{{$number}}</td>
                 @endforeach
             </tr>
-          
           </thead>
-         
-          
-          <tbody>
-          
-                
-
-               
+          <tbody class="shift-tbody">
                 @foreach($nailists_ids as $nailists_id)
               
               <tr>
@@ -79,10 +76,7 @@
            <td style="background-color:lightgreen;">遅番</td>
            @endif
 
-
-           @endfor
-          
-  
+           @endfor  
                 </tr>
                 @endforeach
 
@@ -116,5 +110,8 @@
 
 .shift-list{
     margin-top:20px;
+}
+.shift-tbody tr td:hover{
+   opacity:0.8;
 }
 </style>

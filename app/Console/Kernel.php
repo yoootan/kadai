@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
 
             $now = Carbon::now();
 
-            $finishEvents = Event::where('start', '<=', $now)->get();
+            $finishEvents = Event::where('start', '<', $now)->get();
 
             foreach($finishEvents as $finishEvent){
 
@@ -40,13 +40,10 @@ class Kernel extends ConsoleKernel
 
                 $finishEvent->save();
             }
-           
-    
-            
+          
         })
-        ->hourly()
-        ->timezone('Asia/Tokyo')
-        ->between('10:00', '21:00');
+        ->everyMinute()
+        ->timezone('Asia/Tokyo');
     }
 
     /**
