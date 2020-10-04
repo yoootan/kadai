@@ -64,3 +64,9 @@ Route::get('ajax/nailist', 'Ajax\AjaxAdminController@nailist');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//mail
+Route::get('sample/mailable/preview',function(){
+    return new App\Mail\CustomerConfirm();
+});
+Route::get('sample/mailable/send','CustomerController@customer_send_mail');

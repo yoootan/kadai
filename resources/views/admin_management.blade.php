@@ -114,4 +114,7 @@
 .shift-tbody tr td:hover{
    opacity:0.8;
 }
+.table{
+    border-radius:6px;
+}
 </style>

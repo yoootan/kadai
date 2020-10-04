@@ -12,8 +12,11 @@ use App\Rest;
 use App\ReservationEvent;
 use App\EventNailist;
 use App\CancelWaiting;
+use App\Mail\CustomerConfirm;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ReservationEventRequest;
 use App\Http\Requests\CancelRequest;
+
 
 
 
@@ -136,10 +139,22 @@ class CustomerController extends Controller
 
         $menu = Menu::where('id',$menu_id)->first();
 
+        $name = $event->name;
+        $text = 'ご予約が確定いたしました';
+        $to = [
+            [
+                'name' => $event->name,
+                'email' => $event->email,
+            ]
+        ];
+        Mail::to($to)->send(new CustomerConfirm($name, $text));
+    
+
         return view('customer_finish',compact('event','menu','nailist'));    
     }
 
     public function customer_finish(Request $request){
+
 
         return view('customer_finish');
 
@@ -169,6 +184,19 @@ class CustomerController extends Controller
         $cancelEvent->save();
 
         return view('customer_cancel_finish',compact('event','menu'));
+    }
+
+    public function customer_send_mail(){
+
+        $name = 'ララベル太郎';
+        $text = 'これからもよろしくお願いいたします。';
+        $to = [
+            [
+                'name' => 'Laravel-rito',
+                'email' => 'test@gmail.com'
+            ]
+        ];
+        Mail::to($to)->send(new CustomerConfirm($name, $text));
     }
     /*public function customer_test(){
 
