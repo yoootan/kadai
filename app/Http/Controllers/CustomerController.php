@@ -30,6 +30,7 @@ class CustomerController extends Controller
 
         $caution = Caution::first();
 
+
         return view('customer_index',compact('nailists','menus','caution'));
     }
 

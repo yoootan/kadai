@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('customer_index');
-});
+
 //お客様用
+Route::get('/','CustomerController@customer_index');
 Route::get('/customer_index','CustomerController@customer_index');
 Route::get('/customer_create','CustomerController@customer_create');
 Route::post('/customer_store','CustomerController@customer_store');
