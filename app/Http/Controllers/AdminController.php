@@ -19,9 +19,7 @@ use DB;
 class AdminController extends Controller
 {
     public function admin_index(){
-
-       
-        
+ 
         $this->middleware('auth');
 
         $today = Carbon::now();
