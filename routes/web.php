@@ -11,7 +11,9 @@
 |
 */
 
-
+Route::get('/', function () {
+    return view('welcome');
+  });
 //お客様用
 Route::get('/','CustomerController@customer_index');
 Route::get('/customer_index','CustomerController@customer_index');
